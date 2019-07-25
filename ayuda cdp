@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>Nueva peticion</title>
+<link rel="stylesheet" href="cdp_estilo.css">
+
+<script>
+function dimePropiedades(){ 
+   	var texto 
+   	texto = "El numero de opciones del select: " + document.formtipo.tipo.length 
+   	var indice = document.formtipo.tipo.selectedIndex 
+   	texto += "nIndice de la opcion escogida: " + indice 
+   	var valor = document.formtipo.tipo.options[indice].value 
+   	texto += "nValor de la opcion escogida: " + valor 
+   	var textoEscogido = document.formtipo.tipo.options[indice].text 
+   	texto += "nTexto de la opcion escogida: " + textoEscogido 
+   	alert(texto) }
+	
+function estadosposibles(){
+	var text
+	switch (document.formtipo.tipo.selectedIndex ) {
+		case 0:
+			text = "Nuevo, TFHKA Pendiente, Cerrado" ;
+		break;
+		case 1:
+			text = "Nuevo, Aprobado, Gestion de venta no efectiva" ;
+		break;	
+		case 2:
+			text = "Nuevo, Cita Asignada, Resuelto, Cerrado" ;
+		break;
+		case 3:
+			text = "Nuevo, Cita Asignada, Resuelto, Cerrado" ;
+		break;
+		default:
+			text = "Nuevo, Cerrado";
+		break;
+	}
+	document.getElementById('est').innerHTML = 'Estados POsibles '+text
+	//document.getElementById('est').style.display = 'block';
+}
+
+
+//"Los posibles estados para este tipo de peticion son: "	
+
+</script>
+
+
+
+</head>
+
+
+
+
+
+<body>
+<h1> Escoge un tipo de peticion </h1>
+
+<form name="formtipo"> 
+
+<select name="tipo">
+   <option value="1">Tarea</option> 
+   <option value="2">Gestion de Ventas</option> 
+   <option value="3">Soporte</option>
+   <option value="3">Desarrollo</option>
+</select>
+<input type=button value="Posibles Estados" onclick="estadosposibles()"> 
+</form>
+
+<!Estados de las peticiones>
+
+<div id=est>
+</div>
+
+
+
+<div id=estados>
+<table>
+	<tr>
+	<th>Abierto</th>
+		<td>Nuevo</td>
+		<td>TFHKA Pendiente</td>
+	</tr>
+	<tr>
+	<th>Cerrado</th>
+		<td>Cerrado</td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

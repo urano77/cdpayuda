@@ -1,0 +1,14 @@
+body {
+	color: black;
+	font-size: larger;
+	font-style: normal;
+	background-color: #ffffdd;
+}
+
+table {
+   width: 100%;
+}
+th, td {
+   width: 25%;
+}
+
