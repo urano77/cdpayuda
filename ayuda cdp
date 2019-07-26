@@ -17,76 +17,81 @@ function dimePropiedades(){
    	var textoEscogido = document.formtipo.tipo.options[indice].text 
    	texto += "nTexto de la opcion escogida: " + textoEscogido 
    	alert(texto) }
-	
+
+function carga(){
+	estadosposibles()
+}
+
 function estadosposibles(){
-	var text
+	var obj = []
 	switch (document.formtipo.tipo.selectedIndex ) {
 		case 0:
-			text = "Nuevo, TFHKA Pendiente, Cerrado" ;
+			obj = ['Nuevo','TFHKA Pendiente', 'Cerrado'] ;
 		break;
 		case 1:
-			text = "Nuevo, Aprobado, Gestion de venta no efectiva" ;
+			obj = ['Nuevo','Aprobado', 'Gestion de venta no efectiva'] ;
 		break;	
 		case 2:
-			text = "Nuevo, Cita Asignada, Resuelto, Cerrado" ;
+			obj = ['Nuevo','Cita Asignada', 'Resuelto', 'Cerrado'] ;
 		break;
 		case 3:
-			text = "Nuevo, Cita Asignada, Resuelto, Cerrado" ;
+			obj = ['Nuevo','Cita Asignada', 'Resuelto', 'Cerrado'] ;
 		break;
 		default:
-			text = "Nuevo, Cerrado";
+			obj = ['Nuevo','Cerrado'] ;
 		break;
 	}
-	document.getElementById('est').innerHTML = 'Estados POsibles '+text
-	//document.getElementById('est').style.display = 'block';
+	console.log(obj);
+	addOptions("est", obj);
 }
 
 
-//"Los posibles estados para este tipo de peticion son: "	
+function addOptions(domElement, obj) {
+ var select = document.getElementsByName(domElement)[0];
+	for (value in obj) {
+  		var option = document.createElement("option");
+  		option.text = obj[value];
+  		select.add(option);
+	}
+}
+
 
 </script>
 
-
-
 </head>
-
-
-
-
 
 <body>
 <h1> Escoge un tipo de peticion </h1>
 
+Tipo
 <form name="formtipo"> 
-
-<select name="tipo">
+<select name="tipo" onchange=carga()>
    <option value="1">Tarea</option> 
    <option value="2">Gestion de Ventas</option> 
    <option value="3">Soporte</option>
    <option value="3">Desarrollo</option>
 </select>
-<input type=button value="Posibles Estados" onclick="estadosposibles()"> 
+<br>
+<!<input type=button value="Posibles Estados" onclick="estadosposibles()"> 
 </form>
 
 <!Estados de las peticiones>
 
-<div id=est>
-</div>
-
-
+<! <body onLoad="carga()"> 
+<! <select name="est">
+<! </select>
+<!</body>
 
 <div id=estados>
-<table>
-	<tr>
-	<th>Abierto</th>
-		<td>Nuevo</td>
-		<td>TFHKA Pendiente</td>
-	</tr>
-	<tr>
-	<th>Cerrado</th>
-		<td>Cerrado</td>
-	</tr>
-</table>
+	<select name="est">
+	<option></option>
+	</select>
 </div>
+
+
+
+<!Orden de pantalla: tipo, asunto, descripcion, estado>
+
 </body>
 </html>
+
